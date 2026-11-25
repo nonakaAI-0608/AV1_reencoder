@@ -3,7 +3,7 @@ if _sys.stdout is None or _sys.stderr is None:
     # Started with pythonw (no console): send print/progress output to a log file
     # instead of crashing on writes to a missing stdout/stderr.
     try:
-        _console_log = open(__import__('os').path.join(__import__('os').path.dirname(__import__('os').path.abspath(__file__)), 'video_reencoder_console.log'), 'w', encoding='utf-8', buffering=1)
+        _console_log = open(__import__('os').path.join(__import__('os').path.dirname(__import__('os').path.abspath(__file__)), 'AV1_reencoder_console.log'), 'w', encoding='utf-8', buffering=1)
     except OSError:
         _console_log = open(__import__('os').devnull, 'w')
     _sys.stdout = _sys.stdout or _console_log
@@ -32,7 +32,7 @@ except Exception:
     TkinterDnD = None
     DND_FILES = None
 
-APP_TITLE = "動画 再エンコード・安全置換ツール v18"
+APP_TITLE = "AV1_reencoder v18 — 動画 再エンコード・安全置換ツール"
 VIDEO_EXTS = {".mp4", ".m4v", ".mkv"}
 
 CODEC_PRESETS = {
@@ -2288,7 +2288,7 @@ class App:
                     try:
                         if "Invalid data found when processing input" in detail:
                             detail += "\n（入力ファイルの破損、録画・コピー途中、または非対応の形式の可能性があります）"
-                        log_path = Path(__file__).resolve().with_name("mp4_reencoder_error.log")
+                        log_path = Path(__file__).resolve().with_name("AV1_reencoder_error.log")
                         with open(log_path,"a",encoding="utf-8") as f:
                             f.write("="*60+"\n"+time.strftime("%Y-%m-%d %H:%M:%S")+"  "+name+"\n"+detail+"\n")
                     except Exception:
